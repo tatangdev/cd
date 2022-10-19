@@ -3,9 +3,11 @@ const express = require('express');
 const app = express();
 const PORT = process.env.PORT || 3000;
 const { User } = require('./models');
+const morgan = require('morgan');
 const { uniqueNamesGenerator, adjectives, colors, animals } = require('unique-names-generator');
 
 app.use(express.json());
+app.use(morgan('dev'));
 
 app.get('/', (req, res) => {
     return res.status(200).json({
